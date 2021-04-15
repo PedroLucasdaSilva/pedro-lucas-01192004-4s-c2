@@ -39,7 +39,7 @@ class compra : AppCompatActivity() {
                 val cachorros = response.body()
                 if (cachorros!=null){
                     valor1 = cachorros.precoMedio
-                    tvCompra.text =  "Cachorro 1: ${cachorros.precoMedio}\n"
+                    tvCompra.text =  tvCompra.text.toString()+ "Cachorro 1: ${cachorros.precoMedio}\n"
                 } else {
                     erro = erro.toString() + "${id1}"
                     tvCompra.text = erro +"\n"

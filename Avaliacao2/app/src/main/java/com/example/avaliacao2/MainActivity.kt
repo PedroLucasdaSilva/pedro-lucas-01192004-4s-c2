@@ -21,19 +21,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //permite gravar dado localmente por um periodo
+        //Não perder a compra dos cachorros
         preferencias = getSharedPreferences("autenticação",MODE_PRIVATE)
 
 
 
-//        val compraAnterior1= preferencias.getInt("idCachorro1",0)
-//        val compraAnterior2 = preferencias.getInt("idCachorro2",0)
-//        if (compraAnterior1!=0 || compraAnterior2!=0){
-//            val compra = Intent(this, compra::class.java)
-//            compra.putExtra("idCachorro1",compraAnterior1)
-//            compra.putExtra("idCachorro2",compraAnterior2)
-//            startActivity(compra)
-//        }
+        val compraAnterior1= preferencias.getInt("idCachorro1",0)
+        val compraAnterior2 = preferencias.getInt("idCachorro2",0)
+        if (compraAnterior1!=0 || compraAnterior2!=0){
+            val compra = Intent(this, compra::class.java)
+            compra.putExtra("idCachorro1",compraAnterior1)
+            compra.putExtra("idCachorro2",compraAnterior2)
+            startActivity(compra)
+        }
     }
 
     fun comprarCachorros(view: View) {
