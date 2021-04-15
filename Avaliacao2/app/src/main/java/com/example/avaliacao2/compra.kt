@@ -41,6 +41,7 @@ class compra : AppCompatActivity() {
                     valor1 = cachorros.precoMedio
                     tvCompra.text =  tvCompra.text.toString()+ "Cachorro 1: ${cachorros.precoMedio}\n"
                 } else {
+                    
                     erro = erro.toString() + "${id1}"
                     tvCompra.text = erro +"\n"
                 }
