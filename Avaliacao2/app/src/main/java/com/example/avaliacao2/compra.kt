@@ -3,6 +3,7 @@ package com.example.avaliacao2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.avaliacao2.data_classes.Cachorros
@@ -22,6 +23,7 @@ class compra : AppCompatActivity() {
         var valor1:Int = 0
         var erro:String ="Deu ruim... Nenhum cachorro encontrado o(s) id(s) "
         val tvCompra: TextView = findViewById(R.id.tv_compra)
+        val foto: ImageView = findViewById(R.id.iv_triste)
 
         val apiCachorros = CachorrosConexao.criar()
 

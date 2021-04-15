@@ -95,6 +95,8 @@ class MainActivity : AppCompatActivity() {
 //        })
 
         val compra = Intent(this, compra::class.java)
+        compra.putExtra("idCachorro1",etCachorro1.text.toString().toInt())
+        compra.putExtra("idCachorro2",etCachorro2.text.toString().toInt())
         startActivity(compra)
     }
 }
