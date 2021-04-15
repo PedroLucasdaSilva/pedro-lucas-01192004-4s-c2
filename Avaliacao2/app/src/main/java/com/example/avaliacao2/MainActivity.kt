@@ -26,32 +26,34 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val compraAnterior1= preferencias.getInt("idCachorro1",0)
-        val compraAnterior2 = preferencias.getInt("idCachorro2",0)
-        if (compraAnterior1!=0 || compraAnterior2!=0){
-            val compra = Intent(this, compra::class.java)
-            compra.putExtra("idCachorro1",compraAnterior1)
-            compra.putExtra("idCachorro2",compraAnterior2)
-            startActivity(compra)
-        }
+//        val compraAnterior1= preferencias.getInt("idCachorro1",0)
+//        val compraAnterior2 = preferencias.getInt("idCachorro2",0)
+//        if (compraAnterior1!=0 || compraAnterior2!=0){
+//            val compra = Intent(this, compra::class.java)
+//            compra.putExtra("idCachorro1",compraAnterior1)
+//            compra.putExtra("idCachorro2",compraAnterior2)
+//            startActivity(compra)
+//        }
     }
 
     fun comprarCachorros(view: View) {
-        val etCachorro1: EditText = findViewById(R.id.et_id1)
-        val etCachorro2: EditText = findViewById(R.id.et_id2)
-        val edit = preferencias.edit()
-        edit.putString("idCachorro1",etCachorro1.text.toString())
-        edit.putString("idCachorro2",etCachorro2.text.toString())
-        edit.commit()
+//        val etCachorro1: EditText = findViewById(R.id.et_id1)
+//        val etCachorro2: EditText = findViewById(R.id.et_id2)
+//        val edit = preferencias.edit()
+//        edit.putString("idCachorro1",etCachorro1.text.toString())
+//        edit.putString("idCachorro2",etCachorro2.text.toString())
+//        edit.commit()
 
         var valor1:Int = 0
-
+        var erro:String ="Deu ruim... Nenhum cachorro encontrado o(s) id(s) "
         val tvCompra: TextView = findViewById(R.id.tv_compra)
+
         val apiCachorros = CachorrosConexao.criar()
         val etId1: EditText = findViewById(R.id.et_id1)
         val etId2: EditText = findViewById(R.id.et_id2)
         val id1 = etId1.text.toString().toInt()
         val id2 = etId2.text.toString().toInt()
+
         apiCachorros.get(id1).enqueue(object : Callback<Cachorros> {
             override fun onFailure(call: Call<Cachorros>, t: Throwable) {
                tvCompra.text = "Deu ruim... Nenhum cachorro encontrado o(s) id(s) ${id1}"
@@ -62,15 +64,16 @@ class MainActivity : AppCompatActivity() {
                 val cachorros = response.body()
                 if (cachorros!=null){
                     valor1 = cachorros.precoMedio
-                    tvCompra.text = tvCompra.text.toString() + "Cachorro 1: ${cachorros.precoMedio}\n"
+                    tvCompra.text =  "Cachorro 1: ${cachorros.precoMedio}\n"
                 } else {
-                    tvCompra.text = ""
+                    erro = erro.toString() + "${id1}"
+                    tvCompra.text = erro +"\n"
                 }
             }
         })
         apiCachorros.get(id2).enqueue(object : Callback<Cachorros> {
             override fun onFailure(call: Call<Cachorros>, t: Throwable) {
-                tvCompra.text =tvCompra.text.toString() + "${id2}"
+                tvCompra.text = tvCompra.text.toString() + "${id2}"
             }
 
             override fun onResponse(call: Call<Cachorros>, response: Response<Cachorros>) {
@@ -80,10 +83,13 @@ class MainActivity : AppCompatActivity() {
                 if (cachorros!=null){
 
                     soma = cachorros.precoMedio + valor1
-                    tvCompra.text = tvCompra.text.toString() + "Cachorro 2: ${cachorros.precoMedio}\n" +
-                                                            "Valor Total: ${soma}"
+                    tvCompra.text = tvCompra.text.toString() +  "Cachorro 2: ${cachorros.precoMedio}\n" +
+                            "Valor Total: ${soma}\n"
+
+
                 } else {
-                    tvCompra.text = ""
+                    erro = erro.toString() + "${id2}"
+                    tvCompra.text = tvCompra.text.toString() + erro + "\n"
                 }
             }
         })

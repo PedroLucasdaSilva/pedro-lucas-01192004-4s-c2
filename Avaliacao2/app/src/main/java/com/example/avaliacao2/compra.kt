@@ -32,7 +32,7 @@ class compra : AppCompatActivity() {
             override fun onResponse(call: Call<Cachorros>, response: Response<Cachorros>) {
                 val tvCompra1:TextView = findViewById(R.id.et_id1)
                 val cachorros = response.body()
-                if (cachorros!=null){
+                if (cachorros!= null){
                     valor1 = cachorros.precoMedio
                     tvCompra.text =tvCompra.text.toString() + "Cachorro 1: ${cachorros.precoMedio}\n"
                 } else {

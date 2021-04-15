@@ -4,6 +4,6 @@ import retrofit2.Call
 import retrofit2.http.*
 interface ApiCachorros {
 
-    @GET("/{id}")
+    @GET("{id}")
     fun get(@Path("id")id:Int):Call<Cachorros>
 }
