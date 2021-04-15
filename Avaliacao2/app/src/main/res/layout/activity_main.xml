@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/id_cachorro1"
+        android:id="@+id/et_id1"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/id_cachorro2"
+        android:id="@+id/et_id2"
+        app:layout_constraintTop_toBottomOf="@id/et_id1"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comprar"
+        app:layout_constraintTop_toBottomOf="@+id/et_id2"
+        android:onClick="comprarCachorros"
+        android:id="@+id/bt_comprar"
+        />
+
+    <ImageView
+        android:id="@+id/iv_nobufeliz"
+        android:layout_width="156dp"
+        android:layout_height="226dp"
+        android:src="@drawable/nobu_feliz"
+        app:layout_constraintTop_toBottomOf="@+id/bt_comprar" />
+
+    <ImageView
+        android:layout_width="204dp"
+        android:layout_height="222dp"
+        android:rotation="90"
+        android:src="@drawable/nobu_noia"
+        app:layout_constraintLeft_toRightOf="@id/iv_nobufeliz"
+        app:layout_constraintTop_toBottomOf="@+id/bt_comprar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/frase_fotos"
+        android:layout_marginTop="30sp"
+        app:layout_constraintTop_toBottomOf="@id/iv_nobufeliz"
+        android:id="@+id/tv_cachorro"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_compra"
+        app:layout_constraintTop_toBottomOf="@id/tv_cachorro"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

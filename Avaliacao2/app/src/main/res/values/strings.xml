@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Avaliacao2</string>
+    <string name="comprar">Comprar Cachorros</string>
+    <string name="id_cachorro1">Id Cachorro 1</string>
+    <string name="id_cachorro2">Id Cachorro 2</string>
+    <string name="frase_fotos">Sim, É MEU CACHORRO</string>
+</resources>
